@@ -1,0 +1,23 @@
+package-lock.json
+  s_3436d2323d6ff7::t_bd5b73f060f2e7 1-6734
+package.json
+  s_3436d2323d6ff7::t_0c2c5ca74ea8c7 1-59
+src/layout/Navbar.vue
+  s_3436d2323d6ff7::t_6e13f379f6ab64 1-56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a5ab9c79ba70c97902cb4789f15c7eadda69e114",
+  "prompts": {},
+  "sessions": {
+    "s_3436d2323d6ff7": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "f4b2eddb-0a82-4528-af62-3eeab122725a",
+        "model": "mai-code-1.1-flash"
+      },
+      "human_author": "tmw-sg366 <sg366@tmw.com>"
+    }
+  }
+}
