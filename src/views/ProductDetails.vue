@@ -23,6 +23,9 @@
           <div><strong>Warranty:</strong> {{ product.warrantyInformation }}</div>
           <div><strong>Return policy:</strong> {{ product.returnPolicy }}</div>
         </div>
+        <div class="mt-4">
+          <button @click.prevent="handleAddToCart" class="px-4 py-2 bg-green-600 text-white rounded">Add to cart</button>
+        </div>
       </div>
     </div>
   </div>
@@ -66,6 +69,12 @@ watch(
     })
   },
 )
+import useCartStore from '@/stores/cartStore'
+
+const cart = useCartStore()
+const handleAddToCart = () => {
+  if (product.value) cart.addToCart(product.value)
+}
 </script>
 
 <style scoped>

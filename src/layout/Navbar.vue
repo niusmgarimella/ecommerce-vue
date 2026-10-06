@@ -1,6 +1,6 @@
 
 <template>
-  <nav class="bg-gray-800 text-white p-4">
+  <nav class="bg-gray-800 text-white p-4 relative">
     <div class="container mx-auto flex justify-between items-center gap-4">
       <ul class="flex space-x-4">
         <li><RouterLink to="/" class="hover:text-gray-400">Home</RouterLink></li>
@@ -8,7 +8,7 @@
         <li><RouterLink to="/contact" class="hover:text-gray-400">Contact</RouterLink></li>
       </ul>
 
-      <div class="search-box">
+      <div class="search-box flex items-center">
         <input
           type="search"
           :value="modelValue"
@@ -16,6 +16,7 @@
           placeholder="Search products..."
           class="search-input"
         />
+        <CartDropdown />
       </div>
     </div>
   </nav>
@@ -23,6 +24,8 @@
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import { computed, ref } from 'vue'
+import CartDropdown from '@/components/CartDropdown.vue'
 
 const props = defineProps<{ modelValue: string }>()
 const emit = defineEmits<{ (event: 'update:modelValue', value: string): void }>()
@@ -31,6 +34,8 @@ const onInput = (event: Event) => {
   const target = event.target as HTMLInputElement
   emit('update:modelValue', target.value)
 }
+
+// cart dropdown moved to component
 </script>
 
 <style scoped>

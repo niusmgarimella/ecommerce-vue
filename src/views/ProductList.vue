@@ -10,17 +10,22 @@
       <div v-for="product in products" :key="product.id" class="card">
         <RouterLink :to="`/products/${product.id}`" class="product-link">
           <img :src="product.thumbnail" :alt="product.title" class="product-image" />
-          <div class="content">
-            <h2>{{ product.title }}</h2>
-            <p class="category">{{ product.category }}</p>
-            <p>{{ product.description.slice(0, 100) }}</p>
-            <div class="rating">
-              <span>⭐ {{ product.rating }}</span>
-              <span>({{ product.reviews.length }} reviews)</span>
-            </div>
-            <p class="price">Price: ${{ product.price }}</p>
-          </div>
         </RouterLink>
+
+        <div class="content">
+          <h2>{{ product.title }}</h2>
+          <p class="category">{{ product.category }}</p>
+          <p>{{ product.description.slice(0, 100) }}</p>
+          <div class="rating">
+            <span>⭐ {{ product.rating }}</span>
+            <span>({{ product.reviews.length }} reviews)</span>
+          </div>
+          <p class="price">Price: ${{ product.price }}</p>
+          <div class="mt-3 flex gap-2">
+            <button @click.prevent="addToCart(product)" class="px-3 py-1 bg-green-600 text-white rounded">Add to cart</button>
+            <RouterLink :to="`/products/${product.id}`" class="text-sm text-blue-600 underline">View details</RouterLink>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -34,6 +39,7 @@ import { RouterLink } from 'vue-router'
 import type { Product } from '@/types/Products'
 import ProductGrid from '@/components/ProductGrid.vue'
 import { fetchProducts } from '@/services/apiService'
+import useCartStore from '@/stores/cartStore'
 
 const props = defineProps<{ searchQuery?: string }>()
 const products = ref<Product[]>([])
@@ -55,6 +61,11 @@ const loadProducts = async () => {
     }
     console.error('Error fetching products:', error)
   }
+}
+
+const cart = useCartStore()
+const addToCart = (product: Product) => {
+  cart.addToCart(product)
 }
 
 const searchProducts = async () => {
