@@ -1,0 +1,40 @@
+src/components/CartDropdown.vue
+  h_66e6661b58dc06 22
+  s_77b6e21439d22c::t_ad869b9942d5f6 1-21,23-53
+src/stores/cartStore.ts
+  s_77b6e21439d22c::t_71acb2bc9158ca 1-24,34-43
+  s_77b6e21439d22c::t_3b2841ee690a77 25-33
+src/views/ProductList.vue
+  s_77b6e21439d22c::t_87be6508c44d5e 14-28
+  s_77b6e21439d22c::t_292d5a2544b1b9 42,66-68
+  s_77b6e21439d22c::t_901a73d087a1a2 69-70
+src/layout/Navbar.vue
+  s_77b6e21439d22c::t_17150788cd432a 3,11,27,37
+  s_77b6e21439d22c::t_7c7bb2b9065730 19,28,38
+src/views/ProductDetails.vue
+  s_77b6e21439d22c::t_6f058364d5a152 72-77
+  s_77b6e21439d22c::t_c3da23f0dbaf42 26-28
+src/__tests__/App.spec.ts
+  s_77b6e21439d22c::t_ee39849ed9da5e 5,20-21,24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b5ba48588d81be87f169860a146cd984fcc7d0bf",
+  "prompts": {},
+  "humans": {
+    "h_66e6661b58dc06": {
+      "author": "tmw-sg366 <sg366@tmw.com>"
+    }
+  },
+  "sessions": {
+    "s_77b6e21439d22c": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "6729ff9e-d764-4734-b118-e9e876f7ec50",
+        "model": "gpt-5-mini"
+      },
+      "human_author": "tmw-sg366 <sg366@tmw.com>"
+    }
+  }
+}
