@@ -17,6 +17,23 @@ const createTestRouter = () =>
 
 describe('ProductList', () => {
   beforeEach(() => {
+    const storage = new Map<string, string>()
+    vi.stubGlobal(
+      'localStorage',
+      {
+        getItem: vi.fn((key: string) => storage.get(key) ?? null),
+        setItem: vi.fn((key: string, value: string) => {
+          storage.set(key, value)
+        }),
+        removeItem: vi.fn((key: string) => {
+          storage.delete(key)
+        }),
+        clear: vi.fn(() => {
+          storage.clear()
+        }),
+      },
+    )
+
     vi.stubGlobal(
       'fetch',
       vi.fn().mockResolvedValue({
@@ -94,6 +111,59 @@ describe('ProductList', () => {
     const links = wrapper.findAll('a')
     expect(links.length).toBeGreaterThan(0)
     expect(links[0].attributes('href')).toContain('/products/1')
+
+    vi.useRealTimers()
+  })
+
+  it('renders products from the API and localStorage together', async () => {
+    vi.useFakeTimers()
+    const router = createTestRouter()
+    localStorage.setItem(
+      'custom-products',
+      JSON.stringify([
+        {
+          id: 99,
+          title: 'Custom Lamp',
+          description: 'Handmade lamp',
+          category: 'home',
+          price: 45,
+          discountPercentage: 5,
+          rating: 4.8,
+          stock: 8,
+          tags: ['home'],
+          sku: 'sku-custom',
+          weight: 1,
+          dimensions: { width: 12, height: 18, depth: 10 },
+          warrantyInformation: '6 months',
+          shippingInformation: '2 days',
+          availabilityStatus: 'In Stock',
+          reviews: [],
+          returnPolicy: '14 days',
+          minimumOrderQuantity: 1,
+          meta: {
+            createdAt: '2024-01-01',
+            updatedAt: '2024-01-02',
+            barcode: 'custom-barcode',
+            qrCode: 'custom-qrcode',
+          },
+          images: ['https://example.com/custom.jpg'],
+          thumbnail: 'https://example.com/custom-thumb.jpg',
+        },
+      ]),
+    )
+
+    const wrapper = mount(ProductList, {
+      props: { searchQuery: '' },
+      global: {
+        plugins: [router, createPinia()],
+      },
+    })
+
+    await vi.runAllTimersAsync()
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.text()).toContain('Phone')
+    expect(wrapper.text()).toContain('Custom Lamp')
 
     vi.useRealTimers()
   })

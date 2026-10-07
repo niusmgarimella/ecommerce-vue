@@ -1,13 +1,15 @@
 
 <template>
   <div class="container mx-auto">
-    <h1>Product List | product Grid</h1>
-    <button @click="showGridView = !showGridView" class="toggle-button mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-      Toggle View
-    </button>
+    <div class="mb-4 flex items-center justify-between gap-3">
+      <h1>Product List | product Grid</h1>
+      <button @click="showGridView = !showGridView" class="toggle-button mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+        Toggle View
+      </button>
+    </div>
 
     <div class="product-list" v-if="showGridView">
-      <div v-for="product in products" :key="product.id" class="card">
+      <div v-for="product in products" :key="`${product.id}-${product.title}`" class="card">
         <RouterLink :to="`/products/${product.id}`" class="product-link">
           <img :src="product.thumbnail" :alt="product.title" class="product-image" />
         </RouterLink>
@@ -34,15 +36,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import type { Product } from '@/types/Products'
 import ProductGrid from '@/components/ProductGrid.vue'
-import { fetchProducts } from '@/services/apiService'
+import AddProductForm from '@/components/AddProductForm.vue'
 import useCartStore from '@/stores/cartStore'
+import useProductStore from '@/stores/productStore'
 
 const props = defineProps<{ searchQuery?: string }>()
-const products = ref<Product[]>([])
+const productStore = useProductStore()
+const products = computed(() => productStore.mergedProducts)
 let searchTimer: ReturnType<typeof setTimeout> | null = null
 let abortController: AbortController | null = null
 
@@ -54,7 +58,7 @@ const loadProducts = async () => {
 
   try {
     const query = props.searchQuery?.trim() ?? ''
-    products.value = await fetchProducts(query, abortController.signal)
+    await productStore.fetchProducts(query, abortController.signal)
   } catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError') {
       return
