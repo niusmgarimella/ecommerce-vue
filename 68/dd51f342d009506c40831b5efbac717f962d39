@@ -1,0 +1,42 @@
+src/__tests__/ProductList.spec.ts
+  s_e542ed65d0dd36::t_8a29d7275f73f2 20-36
+  s_e542ed65d0dd36::t_5ba5c6b7052d0a 117-166
+  s_e542ed65d0dd36::t_d6a7ea8a46adb4 167-169
+src/stores/productStore.ts
+  s_e542ed65d0dd36::t_4560d9aca3428c 1-68
+src/router/index.ts
+  h_66e6661b58dc06 4,19-22
+  h_66e6661b58dc06 23
+src/layout/Navbar.vue
+  h_66e6661b58dc06 7
+src/components/AddProductForm.vue
+  s_e542ed65d0dd36::t_5997057092287a 1-65,67-110
+  s_e542ed65d0dd36::t_787675393dc571 66
+src/stores/cartStore.ts
+  s_e542ed65d0dd36::t_4560d9aca3428c 2,10-56
+src/views/ProductList.vue
+  s_e542ed65d0dd36::t_4560d9aca3428c 4-9,12,39,43,45,48-49,61
+src/composables/useCart.ts
+  h_66e6661b58dc06 1-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "68dd51f342d009506c40831b5efbac717f962d39",
+  "prompts": {},
+  "humans": {
+    "h_66e6661b58dc06": {
+      "author": "tmw-sg366 <sg366@tmw.com>"
+    }
+  },
+  "sessions": {
+    "s_e542ed65d0dd36": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "da816dab-3d16-47fa-a890-2b29b8c49b2e",
+        "model": "mai-code-1.1-flash"
+      },
+      "human_author": "tmw-sg366 <sg366@tmw.com>"
+    }
+  }
+}
