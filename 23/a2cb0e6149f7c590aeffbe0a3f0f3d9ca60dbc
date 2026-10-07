@@ -1,0 +1,12 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "23a2cb0e6149f7c590aeffbe0a3f0f3d9ca60dbc",
+  "prompts": {},
+  "humans": {
+    "h_66e6661b58dc06": {
+      "author": "tmw-sg366 <sg366@tmw.com>"
+    }
+  }
+}
