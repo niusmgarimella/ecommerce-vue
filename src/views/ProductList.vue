@@ -40,7 +40,6 @@ import { ref, onMounted, watch, computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import type { Product } from '@/types/Products'
 import ProductGrid from '@/components/ProductGrid.vue'
-import AddProductForm from '@/components/AddProductForm.vue'
 import useCartStore from '@/stores/cartStore'
 import useProductStore from '@/stores/productStore'
 
