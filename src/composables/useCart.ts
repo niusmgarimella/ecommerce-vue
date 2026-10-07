@@ -20,8 +20,12 @@ export function useCart() {
 
   function addToCart(product: Product) {
     const idx = findIndex(product.id)
+    
     if (idx >= 0) {
-      state.items[idx].quantity += 1
+      const item = state.items[idx]
+      if (item) {
+        item.quantity += 1
+      }
     } else {
       state.items.push({ product, quantity: 1 })
     }
@@ -31,10 +35,12 @@ export function useCart() {
     const idx = findIndex(productId)
     if (idx === -1) return
     const item = state.items[idx]
-    if (item.quantity > 1) {
-      item.quantity -= 1
-    } else {
-      state.items.splice(idx, 1)
+    if(item) {
+      if (item.quantity > 1) {
+        item.quantity -= 1
+      } else {
+        state.items.splice(idx, 1)
+      }
     }
   }
 
