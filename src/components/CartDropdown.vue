@@ -1,10 +1,11 @@
 <template>
   <div class="ml-4 relative">
+    <div class="cart-dropdown">
     <button @click="toggleCart" class="flex items-center gap-2">
       <span class="text-sm">Cart</span>
       <div class="bg-red-600 text-white rounded-full px-2 py-0.5 text-xs">{{ cartCount }}</div>
     </button>
-
+</div>
     <div v-if="open" class="absolute right-0 mt-2 w-80 bg-white text-black rounded shadow-lg z-50">
       <div class="p-3">
         <h4 class="font-semibold">Cart</h4>
@@ -33,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import useCartStore from '@/stores/cartStore'
 import { RouterLink } from 'vue-router'
 
@@ -47,6 +48,22 @@ const decrease = (id: number) => cart.decreaseQuantity(id)
 const increase = (product: any) => cart.addToCart(product)
 const remove = (id: number) => cart.removeFromCart(id)
 const clearCart = () => cart.clearCart()
+
+const handleClickOutside = (event: MouseEvent) => {
+  const target = event.target as HTMLElement
+
+  if (!target.closest('.cart-dropdown')) {
+    open.value = false
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside)
+})
 </script>
 
 <style scoped>
