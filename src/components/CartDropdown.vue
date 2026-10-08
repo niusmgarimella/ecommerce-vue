@@ -26,7 +26,7 @@
         </li>
       </ul>
       <div class="p-3 border-t flex justify-end gap-2">
-        <button @click="clearCart" class="px-3 py-1 text-sm bg-gray-100 rounded">Clear</button>
+        <RouterLink to="/cart">View Cart</RouterLink> || <button @click="clearCart" class="px-3 py-1 text-sm bg-gray-100 rounded">Clear</button>
       </div>
     </div>
   </div>
@@ -35,6 +35,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import useCartStore from '@/stores/cartStore'
+import { RouterLink } from 'vue-router'
 
 const cart = useCartStore()
 const cartCount = computed(() => cart.totalCount)

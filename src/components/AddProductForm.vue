@@ -1,6 +1,6 @@
 <template>
   <form class="mb-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm" @submit.prevent="submitProduct">
-    <h2 class="mb-3 text-lg font-semibold">Add a Product</h2>
+    <h2 class="mb-3 text-lg font-semibold">Add New Product</h2>
 
     <div class="grid gap-3 md:grid-cols-2">
       <label class="flex flex-col gap-1 text-sm font-medium text-gray-700">

@@ -24,7 +24,7 @@
           </div>
           <p class="price">Price: ${{ product.price }}</p>
           <div class="mt-3 flex gap-2">
-            <button @click.prevent="addToCart(product)" class="px-3 py-1 bg-green-600 text-white rounded">Add to cart</button>
+            <button @click.prevent="addToCart(product)" class="px-3 py-1 bg-green-600 text-white rounded cursor-pointer">Add to cart</button>
             <RouterLink :to="`/products/${product.id}`" class="text-sm text-blue-600 underline">View details</RouterLink>
           </div>
         </div>
@@ -141,5 +141,9 @@ h2 {
 .price {
   font-weight: 700;
   color: #111;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 </style>

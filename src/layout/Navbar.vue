@@ -5,7 +5,7 @@
       <ul class="flex space-x-4">
         <li><RouterLink to="/" class="hover:text-gray-400">Home</RouterLink></li>
         <li><RouterLink to="/add-products" class="hover:text-gray-400">Add Product</RouterLink></li>
-        <li><RouterLink to="/contact" class="hover:text-gray-400">Contact</RouterLink></li>
+        <li><RouterLink to="/cart" class="hover:text-gray-400">Cart</RouterLink></li>
       </ul>
 
       <div class="search-box flex items-center">
