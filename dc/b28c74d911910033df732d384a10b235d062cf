@@ -1,0 +1,14 @@
+src/components/CartDropdown.vue
+  h_66e6661b58dc06 3,8,37,51-66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "dcb28c74d911910033df732d384a10b235d062cf",
+  "prompts": {},
+  "humans": {
+    "h_66e6661b58dc06": {
+      "author": "tmw-sg366 <sg366@tmw.com>"
+    }
+  }
+}
